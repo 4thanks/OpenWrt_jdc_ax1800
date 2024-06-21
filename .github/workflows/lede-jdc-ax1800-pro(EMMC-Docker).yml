@@ -68,6 +68,8 @@ jobs:
         echo "OPENWRT_PATH=$PWD" >> $GITHUB_ENV
         VERSION_INFO=$(git show -s --date=short --format="作者: %an<br/>时间: %cd<br/>内容: %s<br/>hash: %H")
         echo "VERSION_INFO=$VERSION_INFO" >> $GITHUB_ENV
+        sed -i '$a src-git nss https://github.com/JiaY-shi/nss-packages;main' feeds.conf.default
+        sed -i '$a src-git sqm_scripts_nss https://github.com/qosmio/sqm-scripts-nss.git' feeds.conf.default
 
     - name: Generate Variables
       run: |
